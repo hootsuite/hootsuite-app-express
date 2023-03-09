@@ -34,25 +34,6 @@ function bindApiButtons() {
     });
   });
 
-  getSingleElementByClassName('hs_assignItem').addEventListener('click', function () {
-    // Generates a 16 character random string to use as the messageId
-    // because the messageId must be unique or Hootsuite will return a 500 error.
-    // This can be saved if you'd like to do something using the `sendassignmentupdates` event
-    // or with the Assignment Event Request API Callback <https://hootsuite.com/developers/app-directory/docs/api#AER>
-    var randomString = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < 16; i++) {
-      randomString += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-
-    hsp.assignItem({
-      messageId: randomString,
-      messageAuthor: getSingleElementByClassName('hs_assignMessageAuthor').value,
-      messageAuthorAvatar: getSingleElementByClassName('hs_assignMessageAuthorAvatar').value,
-      message: getSingleElementByClassName('hs_assignMessage').value
-    });
-  });
-
   getSingleElementByClassName('hs_attachFile').addEventListener('click', function () {
     hsp.getMemberInfo(function (data) {
       var timestamp = Math.floor(Date.now() / 1000);

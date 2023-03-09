@@ -49,14 +49,22 @@ The Sample App can be hosted locally, or on Heroku or some other hosting service
 5. `git push heroku master` to push this app to Heroku. Heroku should detect that this app is a Node/Express app and run your index.js file
 6. Once Heroku says that it's done use `heroku open` and add /modal to the URL it opened in your browser. If it comes up with a blank page that has a "Show JSON Payload" button then the web server is setup correctly.
 
+## Using another hosting solution
+
+You can host your app on any service, but here are few things to keep in mind:
+
+* You need to accept POST requests on your plugin and stream endpoints.
+* You need to host the static CSS, Javascript, and icons somehow.
+* Your endpoints need to have HTTPS.
+
 ## Configuration
 
 ### Configuring your Hootsuite App
 
 1. If you already have a Hootsuite developer account head over to [your Hootsuite app  directory management page](https://hootsuite.com/developers/my-apps) and create an app, and inside that app create a plugin component.
-2. Edit the plugin component and enter the following into the fields: For the plugin component Service URL use your endpoint for plugin.html, if you used Heroku and Node this would be `https://<heroku-app-name-here>.herokuapp.com/plugin` . Also, check off the Default Install box.
+2. Edit the plugin component and enter the following into the fields: For the plugin component Service URL use your endpoint for plugin.html, if you used Heroku and Node this would be `https://<heroku-app-name-here>.herokuapp.com/plugin` .
 3. If you'd like to install a stream example as well you should create another component, but this time make it a stream. Edit it again and this time enter `https://<heroku-app-name-here>.herokuapp.com/stream` as your Service URL.
-4. Install your app by going to your [Hootsuite dashboard](https://hootsuite.com/dashboard) and navigating to the app directory (puzzle piece at the bottom of the left sidebar). Your app should be under Developer, install it.
+4. Install your app by going to your [Hootsuite dashboard](https://hootsuite.com/dashboard) and navigating to via [app directory](https://hootsuite.com/dashboard#/appdirectory?sectionKey=all-apps) (or first click on my profile icon at left bottom on the sidebar, then click Install Hootsuite apps). Your app should be under Developer, install it.
 5. Test it by going to your [Hootsuite dashboard](https://hootsuite.com/dashboard), clicking the elipsis on any post and hitting Send to <your-plugin-component-name>. This should pop up a modal with some info about the post you sent to the app.
 
 ### Configuring your shared secret (for use with attachFileToMessage())
@@ -64,7 +72,7 @@ The Sample App can be hosted locally, or on Heroku or some other hosting service
 1. Edit your app in [My Apps](https://hootsuite.com/developers/my-apps)
 2. Under "Authentication Type" select "Single Sign-On (SHA-512)"
 3. Create a shared secret (preferably by randomly generating it) and enter it into the "Shared Secret" field and hit save at the bottom of the page.
-4. Paste the Shared Secret into .env, run `heroku config:push` and you should be good to go!
+4. Paste the Shared Secret into .env, run `heroku config:push` and you should be good to go! (Need to install `heroku-config` plugin to use this command, refer to `Configure Twitter` section).
 
 ### Configuring your Google client ID
 
@@ -73,13 +81,6 @@ The Sample App can be hosted locally, or on Heroku or some other hosting service
 3. Copy your OAuth 2 Client ID and paste it into `modal.html` and `stream.html` where it says `YOUR-CLIENT-ID-HERE`.
 4. Google Sign-in should now work seamlessly. If it doesn't work then ensure that your Authorized Javascript origins are set up correctly in the [Google Cloud Console](https://console.cloud.google.com/).
 
-## Using another hosting solution
-
-You can host your app on any service, but here are few things to keep in mind:
-
-* You need to accept POST requests on your plugin and stream endpoints.
-* You need to host the static CSS, Javascript, and icons somehow.
-* Your endpoints need to have HTTPS.
 
 ## Other things you can do with the Plugin SDK
 
