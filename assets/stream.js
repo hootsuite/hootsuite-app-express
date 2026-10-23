@@ -159,7 +159,7 @@ function loadTopBars() {
 
 // for our purposes this is the same thing as jQuery's  $(document).ready(...)
 document.addEventListener('DOMContentLoaded', function () {
-  // intializes the Hootsuite JS SDK
+  // initializes the Hootsuite JS SDK
   hsp.init({
     useTheme: true
   });
