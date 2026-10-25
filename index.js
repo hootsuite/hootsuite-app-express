@@ -29,7 +29,7 @@ try {
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
 } catch(error) {
-  console.log('No Twitter API credenitals found');
+  console.log('No Twitter API credentials found');
 }
 
 function sleep(ms) {
@@ -154,7 +154,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-// All Hoosuite apps require HTTPS, so in order to host locally
+// All Hootsuite apps require HTTPS, so in order to host locally
 // you must have some certs. They don't need to be issued by a CA for development,
 // but for production they definitely do! Heroku adds its own TLS,
 // so you don't have to worry about it as long as TLS is enabled on your Heroku app.
